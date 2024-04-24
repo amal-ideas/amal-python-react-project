@@ -1,0 +1,1 @@
+[{"model": "Politricks.usertag", "pk": 1, "fields": {"tagId": 1, "postId": [4, 11]}}, {"model": "Politricks.usertag", "pk": 2, "fields": {"tagId": 7, "postId": [9]}}, {"model": "Politricks.usertag", "pk": 3, "fields": {"tagId": 2, "postId": [10]}}, {"model": "Politricks.usertag", "pk": 4, "fields": {"tagId": 9, "postId": [11]}}]

@@ -1,0 +1,49 @@
+
+{% extends 'politricks/base.html' %}
+
+
+{% block content %}
+    {% load static %}
+<link href="{% static 'politricks/user.css' %}" rel='stylesheet' type='text/css' />
+
+<div class="page-content page-container" id="page-content">
+<h2>User List</h2>
+    <div class="padding">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="list list-row">
+                    {% for user in users %}
+                    <div class="list-item" data-id="{{ user.user.pk }}">
+                        <div><a href="#" data-abc="true"><span class="w-48 avatar gd-warning">
+                            {% if user.photo %}
+
+                            <img src="{{ user.photo.url }}">
+                            {% else %}
+                            {{ user.user.username | slice:"1"}}
+                    {% endif %}
+                        </span></a></div>
+                        <div class="flex"> <a href="{% url 'user-profile' user.user.pk %}" class="item-author text-color" data-abc="true">{{ user.user.username }}</a>
+                            <div class="item-except text-muted text-sm h-1x">{{ user.user.email}}</div>
+                        </div>
+                        <div class="no-wrap">
+                            <div class="item-date text-muted text-sm d-none d-md-block">{{ user.user.date_joined}}</div>
+                        </div>
+                    <nav style="width: 100%;float: right;">
+							<ul class="user-btn">
+                                {% if user.user.pk == request.user.pk %}
+								<li><a href="{% url 'user_edit' %}" class="active">Edit</a></li>
+                                {% endif %}
+								<li><a href="{% url 'user-profile' user.user.pk %}">Profile</a></li>
+
+							</ul>
+						</nav>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

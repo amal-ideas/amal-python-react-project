@@ -1,0 +1,40 @@
+{% extends 'politricks/base.html' %}
+
+
+{% block content %}
+
+<h1>My Profile</h1>
+{% if user.user == current_user.user %}
+
+    <a href="{% url 'user_edit' %}">Edit</a>
+{% endif %}
+<ul>
+    <li>Name: {{ user.user.first_name }}</li>
+    <li>Email: {{ user.user.email }}</li>
+    <li>Phone: {{ user.user.username }}</li>
+</ul>
+
+<h2>My Tags</h2>
+<ul>
+    {% for userTag in user.tag.all %}
+        <li>#{{ userTag.name }}</li>
+    {% empty %}
+        No tags!
+    {% endfor %}
+</ul>
+
+<h2>My Posts</h2>
+<ul>
+  {% for post in posts %}
+  <li>{{ post.title }} - {{ post.create_at }}
+  <ul>
+      {% for reaction in reactions %}
+          {% if reaction.postId != null and reaction.postId.id == post.pk %}
+            <li>Supported {{ reaction.supportCnt.count}} - Un Supported {{ reaction.unSupportCnt.count}}</li>
+          {% endif %}
+      {% endfor %}
+  </ul>
+      </li>
+  {% endfor %}
+</ul>
+{% endblock %}

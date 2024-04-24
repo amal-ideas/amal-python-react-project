@@ -1,0 +1,263 @@
+# Developer Journal
+
+> August 10th 2020 – Started @ 2:30PM
+Added README.RD file explaining about the web application that going to implement.
+Estimate: 30 minutes
+
+==
+> August 28th 2020 – Started @ 10:45am
+Started doing Task #1 - Server-side rendering and created JOURNAL.RD
+Estimate: 1 hour
+
+11:48AM: Added Task breakdown
+Estimate: half an hour
+
+stopped @ 12:15PM
+==
+
+==
+> August 29th 2020 – Started @ 7:20pm
+Moved #10 descriptive tasks from README.md to issues tab.
+Estimate: 15 minutes
+
+7:35pm: Started design ERD using Visual paradigm app.
+Estimate: half an hour
+
+10:25pm: Converted ERD file to .png and added in README. Added other features to include more Models.
+Estimate: 2 hours
+
+stopped @ 12:20AM
+==
+
+==
+> August 30th 2020 – Started @ 6pm
+Started learning REST API
+Estimate: 1 hour
+==
+
+==
+> August 31th 2020 – Started @ 11pm
+Created the application using Django framework and created 6 models.
+Estimate: 1:24 hour
+==
+
+==
+> September 1st 2020 – Started @ 11pm
+Completed 10 models in Task #2. And committed the same to Github in "/application" directory.
+Estimate: 1:30 hours
+==
+
+==
+>September 2nd 2020 – Started @ 11:45pm 
+Tried to migarte all models, initially there was an error and i have corrected. 10 models are successfully migrated.
+Estimate: 45 minutes
+
+12:30am: Created 1 view and two post has been displayed.
+Estimate: 50 minutes
+
+All changes has been committed to Git.
+
+stopped @ 1:20am
+==
+
+==
+>September 3rd 2020 Started @ 11:30pm
+Changed two fields in "Post Reaction" to "Many-to-Many" fields. Set up "Supported" and "Unsupported" count.
+Estimate: 45 minutes
+
+12:15am: As in Task #2, another two view has been created. First I got confused with "How we will pass a key into a detail view?", then I got the idea and created "User Profile" and "User List" pages.
+Estimate: 2:30 hours
+
+Finally committed all changes to Git.
+
+stopped @ 2:45am
+==
+
+==
+>September 4th 2020 Started @ 11am
+Created Post detail page, and detail links are provided on index and user list page.
+Estimate: 45 minutes
+
+11:45am: Login page
+Estimate: 45 minutes
+
+12:30pm: Register page in progress
+Estimate: 1:15 hours
+==
+
+==
+>September 5th 2020 Started @ 1:30pm
+In Task #2, Registration part has been completed
+Reference: https://medium.com/@himanshuxd/how-to-create-registration-login-webapp-with-django-2-0-fd33dc7a6c67
+Estimate: completed @ 3:40pm
+
+4:30pm: Started creating Post form in form.py
+Estimate: completed @ 8pm.
+
+8:30pm: Added "Post Add" and "Post Edit" page. 
+Estimate: completed @ 10pm
+
+10pm: Designed Registration page
+Completed @ 11:15pm.
+
+Completed total 8 templates and comitted all changes to Git.
+Total Estimate: 9:45 hours
+==
+
+==
+>Sep 6th 2020 Started @ 2:15pm
+Created new form for User to edit thier personal data.
+completed at 3:10pm.
+
+8:30pm: Created another view called "Party Detail Page". Now all 10 templates are in place. Post Detail page has been designed with reference of W3 layouts.
+Completed @ 11:30pm.
+
+Total Estimate: 3:55 hours
+==
+
+==
+>Sep 7th 2020 started @ 7pm
+Change passwoord feature has been updated.
+Estimate: 15 minutes
+
+8:30pm: "Support" and "Unsupport" features for each post has been implemented
+Completed @ 10pm.
+
+11:30pm Used base template and used on index and Post detail page.
+Completed @ 2:30am
+==
+
+==
+>Sep 08th 2020 started @ 12:30pm
+Designed User list page and fixed post adding feature. Also fixed and learned M2M field update. Links are updated correctly. 90% of the Task #2 has been completed.
+Completed @ 3:10pm.
+==
+
+==
+>Sep 9th 2020 started @ 12pm
+Removed Login model and replaced with "Party Testimonials". Stuck with One-to-One field error. Trying to figure out.
+Estimate: 1 hour.
+==
+
+==
+>Sep 10th 2020 started @ 9:35am
+All items in Task #2 has been included. Testimonial Adding and view feature has been updated on Party detail page.
+Estimate: 1:15 hour
+==
+
+==
+>Sep 11th 2020 started @ 5:30
+Added seperate page for Logout and fixed issue while adding new posts. Only pending is to include formsets. Confused with how to include models with formsets.
+Referrence: https://levelup.gitconnected.com/how-to-implement-login-logout-and-registration-with-djangos-user-model-59442164db73
+Estimate: 1:30 hour
+==
+
+==
+>Sep 12th 2020 started @11pm
+Added Forgot password feature.
+reference: https://learndjango.com/tutorials/django-password-reset-tutorial#:~:text=Password%20Reset%20Form&text=Now%20go%20ahead%20and%20enter,the%20button%20to%20submit%20it.&text=If%20you%20refresh%20the%20password,can%20see%20our%20new%20page.
+Estimate: half an hour
+==
+
+==
+Sep 13th 2020 Started @10am
+completed status part and submitted for final submittion of Task #2
+Estimate: 1 hour
+==
+
+==
+September 14th started @ 10:30am
+Task #3 started -  filter, exclude, order_by and exists are included
+> Django messages are utilized
+> function and class based views are included. I have made "User Edit" as class view.
+> I have created 10 json models files using dumpdata.
+> working on signals.
+Estimate: 4:25 hours
+==
+
+==
+September 15th started @ 10:30am
+Task #3 - Customisation of Administrator control panel has been completed.
+Refference: https://realpython.com/customize-django-admin-python/
+Estimate: 1:30 hours
+==
+
+==
+September 16th started @ 11:15 am
+Task #3 - three tests are added.
+Estimate: 2:15 hours
+==
+
+==
+September 17th started @ 9pm
+Task #3 - three more unit test cases has been added.
+Estimate: 2 hours
+==
+
+==
+September 19th Started @ 2pm
+Unit tests all are completed. Deployed to Heroku. Trying fix collective static.
+completed @ 6:45pm
+
+> 7pm: Created PostgreSql instance in Heroku and migrated all dumpdata using loaddata. Now site is up and Task #3 has been almost completed.
+Url: https://mysterious-forest-70839.herokuapp.com/
+Estimate: 2:45 hours
+==
+
+==
+September 20th  -  Task #3 and #4 are completed.
+==
+
+==
+September 22nd - Task #4 started @ 8:30am
+Set up Sendgrid and Sentry in my project.
+Estimate: 2 hours
+==
+
+==
+September 23rd - Above task has been deployed to Heroku
+And my master branch got messed up and I had to clone it again to other directory and made it working finally.
+Estimate: 12:15am t0 1:50am
+
+>11am - Redis has been set up as application cache. Tried to add AWS s3. But AWS is showing some error in registration.
+Estimate: 1:30 hours
+==
+
+==
+September 25th started @ 9:30
+Completed AWS image upload and deployed to Heroku
+Estimate: 3 hours
+==
+
+==
+September 26th started @ 12:30 am
+Did celery+ redis settings. But broker url connection is not establishing. I have been investitating.
+stopped @ 4 am
+==
+
+==
+September 27th started @ 1:30pm
+Task #5 items has been updated and corrected Anonymous user issue.
+Estimate: 3:45 hours
+
+>10:30 pm - some issues in user form has been updated.
+completed @ 10:50pm
+==
+
+==
+September 28th started @ 6:30pm
+celery task has been added.
+Estimate: 2 hours
+==
+
+==
+September 30th started @10 am
+Final commit has been done.
+http://politricks.me/
+==
+
+==
+October 4th started 10 am
+Updated front page.
+Estimate: 2 hours
+==

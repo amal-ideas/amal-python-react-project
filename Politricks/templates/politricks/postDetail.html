@@ -1,0 +1,188 @@
+{% extends 'politricks/base.html' %}
+
+
+{% block content %}
+{% load static %}
+<link href="{% static 'politricks/post.css' %}" rel='stylesheet' type='text/css' />
+
+<!-- technology -->
+<div class="technology-1">
+	<div class="container">
+		<div class="col-md-9 technology-left">
+			<div class="business">
+				<div class=" blog-grid2">
+                {% if post.picture %}
+    <img src="{{ post.picture.url }}" class="img-responsive" alt=""/></a>
+                        {% else %}
+                         <img src="{% static 'politricks/images/post_default.jpg' %}" class="img-responsive" alt=""/></a>
+                        {% endif %}
+					<div class="blog-text">
+						<h5>{{ post.title }}</h5>
+                    {% if post.userID.user.pk == current_user.user.pk  %}
+<a href="{% url 'post_edit' post.pk %}">edit</a>
+{% endif %}
+                        {% for Tag in post.postTag.all %}
+        <li>#{{ Tag.name }}</li>
+    {% endfor %}
+                        <i>{{ post.create_at }}</i>
+						<p>{{ post.description }}</p>
+					</div>
+				</div>
+            <div class="reaction">
+                {% for reaction in reactions %}
+          {% if reaction.postId != null and reaction.postId.id == post.pk %}
+
+              <li><i class="glyphicon glyphicon-comment"> </i><a class="p-blog" href="#">{{reaction.supportCnt.count}} Supported </a></li>
+								<li><i class="glyphicon glyphicon-heart"> </i><a class="admin" href="#">{{ reaction.unSupportCnt.count}} Un Supported </a></li>
+          {% endif %}
+      {% endfor %}
+                <form enctype="multipart/form-data" method="POST">
+{% csrf_token %}
+                    <div class="hdn_post" style="display: none;">{{ reaction_form.as_p }}</div>
+                    <script>
+                        $(function (){
+                           $('select[name="postId"] option').val({{ post.pk }})
+                        });
+                    </script>
+                    {% if supportedcurrentuser %}
+                    <input type="submit" name="support" value="You Supported">
+                    {% else %}
+                        <input type="submit" name="support" value="Support">
+                    {% endif %}
+{% if unsupportedcurrentuser %}
+                    <input type="submit" name="unsupport" value="You UnSupported">
+                {% else %}
+    <input type="submit" name="unsupport" value="Un Support">
+                {% endif %}
+                </form>
+            </div>
+				<div class="comment-top">
+						<h2>Comment</h2>
+                    {% for comment in comments %}
+                        <div class="media">
+						<div class="media-left">
+						  <a href="{% url 'user-profile' comment.user.user.pk %}">
+                              {% if comment.user.photo %}
+
+                            <img src="{{ comment.user.photo.url }}" style="max-height:90px">
+                            {% else %}
+                            <img src="{% static 'politricks/images/user_default.png' %}" alt="">
+                    {% endif %}
+						  </a>
+						</div>
+					<div class="media-body">
+
+						  <h4 class="media-heading">
+
+                              {{ comment.user.user.username }}
+                              {% if comment.user.user.pk == current_user.user.pk  %}
+                               (You)
+                          {% endif %}
+                          </h4>
+
+						  <p>{{ comment.content }}</p>
+					</div>
+                        </div>
+                    {% endfor %}
+
+				</div>
+				<div class="comment">
+					<h3>Leave a Comment</h3>
+					<div class=" comment-bottom">
+						<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+							{{ comment_form.as_p }}
+							<input type="submit" value="Add">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- technology-right -->
+		<div class="col-md-3 technology-right-1">
+
+				<div class="blo-top">
+
+					<div class="tech-btm">
+                         <div class="contact-grids">
+						 <div>
+								<div class="contact-grid">
+									<div class="contact-fig">
+                                        <h2 style="margin-top: 0">Author</h2>
+                                        {% if post.userID.photo %}
+
+                            <img src="{{ post.userID.photo.url }}" style="max-height:90px">
+                            {% else %}
+                            <img src="{% static 'politricks/images/user_default.png' %}" alt="">
+                    {% endif %}
+
+									</div>
+									<p>{% if post.userID.user.pk == current_user.user.pk  %}
+        {{ owner.user.username }} (You)
+        {% else %}
+        {{ owner.user.username }}
+        {% endif %}</p>
+                                <p>{{ owner.user.email }}</p>
+								</div>
+								<div class="clearfix"> </div>
+							 </div>
+							 </div>
+					<img src="images/banner1.jpg" class="img-responsive" alt=""/>
+					</div>
+				</div>
+        {% if user.is_authenticated %}
+        {% else %}
+				<div class="blo-top">
+					<div class="tech-btm">
+					<h4>Sign up to our newsletter</h4>
+					<p>Pellentesque dui, non felis. Maecenas male</p>
+						<div class="name">
+							<form>
+								<input type="text" placeholder="Email" required="">
+							</form>
+						</div>
+						<div class="button">
+							<form>
+								<input type="submit" value="Subscribe">
+							</form>
+						</div>
+							<div class="clearfix"> </div>
+					</div>
+				</div>
+        {% endif %}
+				<div class="blo-top1">
+					<div class="tech-btm">
+<h4>Most commented posts</h4>
+
+                     {% for post in top_post %}
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="{% url 'post-detail' post.pk %}">
+                                    {% if post.picture %}
+    <img src="{{ post.picture.url }}" class="img-responsive" alt=""/></a>
+                        {% else %}
+                         <img src="{% static 'politricks/images/post_default.jpg' %}" class="img-responsive" alt=""/></a>
+                        {% endif %}
+                                    </a>
+							</div>
+							<div class="blog-grid-right">
+
+								<h5><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+
+
+                    {% endfor %}
+					</div>
+				</div>
+
+		</div>
+		<div class="clearfix"></div>
+		<!-- technology-right -->
+	</div>
+</div>
+<!-- technology -->
+
+{% endblock %}
+

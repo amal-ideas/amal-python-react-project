@@ -1,0 +1,154 @@
+{% extends 'politricks/base.html' %}
+
+
+{% block content %}
+{% load static %}
+<link href="{% static 'politricks/post.css' %}" rel='stylesheet' type='text/css' />
+<!-- technology -->
+<div class="technology">
+	<div class="container nopadding">
+		<div class="col-md-9 technology-left nopadding">
+         {% if user.is_authenticated %}
+    <div class="card mb-4" style="margin-right: .5rem;">
+                <div class="button right">
+							<form>
+                                <a href="{% url 'post-update' %}">Add your Post here</a>
+							</form>
+						</div>
+            </div>
+
+        {% else %}
+                <div class="alert alert-info" style="margin-right: .5rem;" role="alert">
+  Total <b>{{ count }}+</b> posts available—<a style="text-decoration: underline" href="{% url 'user_login' %}">Login</a> and post yours!
+</div>
+    {% endif %}
+		<div class="tech-no">
+            {% for post in posts %}
+			<!-- technology-top -->
+			<div class="soci">
+				<ul>
+					<li><a href="#" class="facebook-1"> </a></li>
+					<li><a href="#" class="facebook-1 twitter"> </a></li>
+					<li><a href="#" class="facebook-1 chrome"> </a></li>
+					<li><a href="#"><i class="glyphicon glyphicon-envelope"> </i></a></li>
+					<li><a href="#"><i class="glyphicon glyphicon-print"> </i></a></li>
+					<li><a href="#"><i class="glyphicon glyphicon-plus"> </i></a></li>
+				</ul>
+			</div>
+			 <div class="tc-ch">
+
+					<div class="tch-img">
+						<a href="{% url 'post-detail' post.pk  %}">
+{% if post.picture %}
+    <img src="{{ post.picture.url }}" class="img-responsive" alt=""/></a>
+                        {% else %}
+                         <img src="{% static 'politricks/images/post_default.jpg' %}" class="img-responsive" alt=""/></a>
+                        {% endif %}
+
+					</div>
+					<a class="blog blue" href="{% url 'party-detail' post.partyID.pk %}">{{ post.partyID.title }}</a>
+					<h3><a href="{% url 'post-detail' post.pk  %}">{{ post.title }}</a></h3>
+						<p>{{ post.description }}</p>
+
+						<div class="blog-poast-info">
+							<ul>
+								<li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="{% url 'user-profile' post.userID.user.pk %}"> {{ post.userID.user.username}}</a></li>
+								<li><i class="glyphicon glyphicon-calendar"> </i>{{ post.create_at }}</li>
+                                {% for reaction in reactions %}
+          {% if reaction.postId != null and reaction.postId.id == post.pk %}
+
+              <li><i class="glyphicon glyphicon-comment"> </i><a class="p-blog" href="#">{{reaction.supportCnt.count}} Supported </a></li>
+								<li><i class="glyphicon glyphicon-heart"> </i><a class="admin" href="#">{{ reaction.unSupportCnt.count}} Un Supported </a></li>
+          {% endif %}
+      {% endfor %}
+
+
+							</ul>
+						</div>
+			</div>
+			<div class="clearfix"></div>
+			<!-- technology-top -->
+
+            {% endfor %}
+			</div>
+		</div>
+		<!-- technology-right -->
+		<div class="col-md-3 technology-right nopadding">
+				<div class="blo-top">
+					<div class="tech-btm">
+					<img src="images/banner1.jpg" class="img-responsive" alt=""/>
+					</div>
+				</div>
+<div class="blo-top">
+{% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+    {% else %}
+
+					<div class="tech-btm">
+					<h4>Sign up to speak up!</h4>
+					<p>Talk about your favourite party and see how people reacts.</p>
+						<div class="name">
+							<form>
+								<input type="text" placeholder="Email" required="">
+							</form>
+						</div>
+						<div class="button">
+							<form>
+								<input type="submit" value="Subscribe">
+							</form>
+						</div>
+							<div class="clearfix"> </div>
+					</div>
+
+    {% endif %}
+</div>
+
+<div class="blo-top">
+					<div class="tech-btm">
+					<h4>Currently available #tags</h4>
+ {% for tag in tags %}
+
+        <button type="button" class="btn btn-primary" style="margin-bottom: 4px">
+            #{{ tag.tagId.name }} <span class="badge badge-danger ml-2">{{ tag.postId.count }}</span>
+
+</button>
+{% endfor %}
+</div>
+</div>
+				<div class="blo-top1">
+					<div class="tech-btm">
+					<h4>Most commented posts</h4>
+
+                     {% for post in topPost %}
+						<div class="blog-grids">
+							<div class="blog-grid-left">
+								<a href="{% url 'post-detail' post.pk %}">
+                                    {% if post.picture %}
+    <img src="{{ post.picture.url }}" class="img-responsive" alt=""/></a>
+                        {% else %}
+                         <img src="{% static 'politricks/images/post_default.jpg' %}" class="img-responsive" alt=""/></a>
+                        {% endif %}
+                                    </a>
+							</div>
+							<div class="blog-grid-right">
+
+								<h5><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> </h5>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+
+
+                    {% endfor %}
+					</div>
+				</div>
+
+		</div>
+		<div class="clearfix"></div>
+		<!-- technology-right -->
+	</div>
+</div>
+<!-- technology -->
+
+
+{% endblock %}
+

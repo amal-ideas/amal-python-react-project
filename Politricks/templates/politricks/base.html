@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Politricks | A political platform</title>
+	<!--/tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Travel Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--//tags -->
+    {% load static %}
+	<link href="{% static 'politricks/bootstrap.css'  %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static 'politricks/base.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/font-awesome.css" rel="stylesheet">
+    <script src="{% static 'politricks/script/jquery-1.11.1.min.js' %}"></script>
+	<!-- //for bootstrap working -->
+	<link href="//fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+</head>
+
+<body>
+	<!-- header -->
+	<div class="header">
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+		<div class="top_menu_w3layouts">
+<div class="container">
+			<div class="header_left">
+				<ul>
+					<li><i class="fa fa-map-marker" aria-hidden="true"></i> 1143 New York, USA</li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i> +(010) 221 918 811</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li>
+				</ul>
+			</div>
+			<div class="header_right">
+                <ul>
+                    {% if request.user.is_authenticated  %}
+					<li><a href="{% url 'user-profile' request.user.pk %}">{{ request.user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'user_login' %}">Login</a></li>
+                    {% endif %}
+				</ul>
+
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+
+		<div class="content white">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+						<a class="navbar-brand" href="{% url 'index' %}">
+							<h1>Politricks</h1>
+						</a>
+					</div>
+					<!--/.navbar-header-->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<nav>
+							<ul class="nav navbar-nav">
+								<li><a href="{% url 'index' %}" class="active">Home</a></li>
+								<li><a href="{% url 'user-list' %}">User List</a></li>
+                                <li><a href="#">Contact</a></li>
+
+							</ul>
+						</nav>
+					</div>
+					<!--/.navbar-collapse-->
+					<!--/.navbar-->
+				</div>
+			</nav>
+		</div>
+	</div>
+
+      {% block content %}
+    {% endblock %}
+
+<!-- footer start here -->
+	<div class="footer-agile">
+		<div class="container">
+			<div class="footer-btm-agileinfo">
+				<div class="col-md-3 col-xs-3 footer-grid w3social">
+					<h3>Our Links</h3>
+					<ul>
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li><a href="{% url 'user-list' %}" >User list</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-xs-3 footer-grid">
+					<h3>Contact Info</h3>
+					<ul>
+						<li><i class="fa fa-map-marker"></i>+012 345 6789</li>
+						<li><i class="fa fa-fax"></i>+987 654 3210</li>
+						<li><i class="fa fa-phone"></i>1143 New York, USA</li>
+						<li><i class="fa fa-envelope-o"></i><a href="mailto:example@mail.com">mail@example.com</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 col-xs-6 footer-grid footer-review">
+					<h3>About us</h3>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
+					<p class="w3l-para-mk">Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="footer-agilem">
+				<div class="col-sm-8 col-xs-9 copy-w3lsright">
+					<p>© 2020 Politricks. All rights reserved | Design by <a href="#"> Amal Unniyantharayil Sudheer.</a></p>
+				</div>
+				<div class="col-sm-4 col-xs-3 social-w3licon">
+					<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+					<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+					<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- //footer end here -->
+
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'politricks/base.html' %}
+
+
+{% block content %}
+{% load static %}
+<link href="{% static 'politricks/post.css' %}" rel='stylesheet' type='text/css' />
+<h1>{{ party.title }}</h1>
+<p>{{ party.description }}</p>
+
+<h2>Related Post</h2>
+{% for post in posts %}
+    <h1>{{ post.title }}</h1>
+    <h5>{{ post.create_at }}</h5>
+    <p>{{ post.description }}</p>
+{% endfor %}
+
+<h2>Testimonials</h2>
+{% for testimonial in testimonials %}
+    <li>{{ testimonial.title }} - {{ testimonial.created }}</li>
+    <li>{{ testimonial.description }}</li>
+    <li>{{ testimonial.rating }}</li>
+{% endfor %}
+
+<h2>Add your Reviews:</h2>
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ partyTestimonial_form.as_p }}
+							<input type="submit" value="Add">
+						</form>
+
+{% endblock %}
