@@ -12,7 +12,7 @@ The first rendering of a web page is performed on server in server rendered appl
 
 > How it works
 
-![Server-side Rendering](https://github.com/kris-classes/web-assignment-amal123us/blob/master/images/server-side-rendering.jpeg)
+![Server-side Rendering](https://github.com/amal-ideas/amal-python-react-project/blob/main/images/server-side-rendering.jpeg)
 
 Since our primary application server is a Django application which can not understand JavaScript, we need a runtime of JavaScript to make our React frontend. We can use a Node Server for this. When our primary Django server is hit by a message, we will check our database to get the details we need. Next we must send the info to our Node server in an HTTP POST request the returns our markup, plus the final state of our Redux store. Finally we must incorporate this information into our Django app's HTML response and send it to the customer.(*Setting Up Server Side Rendering with React, Redux, and Django, Alexander Richey*)
 
@@ -20,4 +20,4 @@ Since our primary application server is a Django application which can not under
 
 I created this ERD with Visual Paradigm destop application.
 
-![Database Entity-Relationship Diagrams](https://github.com/kris-classes/web-assignment-amal123us/blob/master/images/ERD.png)
+![Database Entity-Relationship Diagrams](https://github.com/amal-ideas/amal-python-react-project/blob/main/images/ERD.png)
